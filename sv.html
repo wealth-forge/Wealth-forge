@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Savings Goal Tracker</title>
+    <style>
+        body {
+            font-family: 'times new roman', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .tracker-container {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: calc(50% - 5px);
+            padding: 10px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tracker-container">
+        <h1><b> Savings Goal Tracker</b></h1>
+
+        <label for="goal">Savings Goal:</label>
+        <input type="number" id="goal" placeholder="Enter your savings goal">
+
+        <label for="current">Current Savings:</label>
+        <input type="number" id="current" placeholder="Enter your current savings">
+
+        <button onclick="trackSavings()">Track Savings</button>
+        <div style="height: 10px;"></div> <!-- Add space between buttons -->
+
+        <div id="result">
+            <p id="progress">Progress: 0%</p>
+        </div>
+    </div>
+
+    <script>
+        let goal = 0;
+        let current = 0;
+
+        function trackSavings() {
+            goal = parseFloat(document.getElementById('goal').value) || 0;
+            current = parseFloat(document.getElementById('current').value) || 0;
+
+            const progress = (current / goal) * 100;
+
+            document.getElementById('progress').innerText = 'Progress: ' + progress.toFixed(2) + '%';
+        }
+    </script>
+
+</body>
+</html>
